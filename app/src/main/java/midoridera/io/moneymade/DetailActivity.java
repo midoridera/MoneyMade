@@ -44,6 +44,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void execute(Realm realm) {
                 memo.title = titleText.getText().toString();
+                memo.content = contentText.getText().toString();
             }
         });
 
