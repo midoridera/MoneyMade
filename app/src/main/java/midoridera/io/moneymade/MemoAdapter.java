@@ -28,10 +28,16 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
         }
 
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
-        TextView contentText = (TextView) convertView.findViewById(R.id.contentText);
+        TextView content1Text = (TextView) convertView.findViewById(R.id.content1Text);
+        TextView content2Text = (TextView) convertView.findViewById(R.id.content2Text);
+        TextView content3Text = (TextView) convertView.findViewById(R.id.content3Text);
+        TextView content4Text = (TextView) convertView.findViewById(R.id.content4Text);
 
         titleText.setText(memo.title);
-        contentText.setText(memo.content);
+        content1Text.setText(memo.content1);
+        content2Text.setText(memo.content2);
+        content3Text.setText(memo.content3);
+        content4Text.setText(memo.content4);
 
         return convertView;
     }

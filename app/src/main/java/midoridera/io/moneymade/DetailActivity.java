@@ -12,7 +12,10 @@ public class DetailActivity extends AppCompatActivity {
     public Realm realm;
 
     public EditText titleText;
-    public EditText contentText;
+    public EditText time1Text;
+    public EditText time2Text;
+    public EditText time3Text;
+    public EditText time4Text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,10 @@ public class DetailActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         titleText = (EditText) findViewById(R.id.titleEditText);
-        contentText = (EditText) findViewById(R.id.contentEditText);
+        time1Text = (EditText) findViewById(R.id.timeH1EditText);
+        time2Text = (EditText) findViewById(R.id.timeM1EditText);
+        time3Text = (EditText) findViewById(R.id.timeH2EditText);
+        time4Text = (EditText) findViewById(R.id.timeM2EditText);
 
         showDate();
 
@@ -33,7 +39,11 @@ public class DetailActivity extends AppCompatActivity {
                 getIntent().getStringExtra("updateDate")).findFirst();
 
         titleText.setText(memo.title);
-        contentText.setText(memo.content);
+        time1Text.setText(memo.content1);
+        time2Text.setText(memo.content2);
+        time3Text.setText(memo.content3);
+        time4Text.setText(memo.content4);
+
     }
 
     public void update(View view) {
@@ -44,7 +54,10 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void execute(Realm realm) {
                 memo.title = titleText.getText().toString();
-                memo.content = contentText.getText().toString();
+                memo.content1 = time1Text.getText().toString();
+                memo.content2 = time2Text.getText().toString();
+                memo.content3 = time3Text.getText().toString();
+                memo.content4 = time4Text.getText().toString();
             }
         });
 
