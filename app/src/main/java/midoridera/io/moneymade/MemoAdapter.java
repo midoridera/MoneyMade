@@ -31,7 +31,14 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
         TextView contentText = (TextView) convertView.findViewById(R.id.contentText);
 
         titleText.setText(memo.title);
+//<<<<<<< Updated upstream
         contentText.setText(memo.content);
+//=======
+//        content1Text.setText(memo.content);
+//        content2Text.setText(memo.content);
+//        content3Text.setText(memo.content);
+//        content4Text.setText(memo.content);
+//>>>>>>> Stashed changes
 
         return convertView;
     }

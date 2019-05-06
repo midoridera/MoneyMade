@@ -19,6 +19,7 @@ public class CreateActivity extends AppCompatActivity {
     public EditText titleEditText;
     public EditText contentEditText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,11 @@ public class CreateActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.JAPANESE);
         String updateDate = sdf.format(date);
 
+//<<<<<<< Updated upstream
         String content = contentEditText.getText().toString();
+//=======
+//        String content = timeH1EditText.getText().toString();
+//>>>>>>> Stashed changes
 
 //        check(title,updateDate,content);
 
@@ -70,6 +75,10 @@ public class CreateActivity extends AppCompatActivity {
         Log.d("Memo", memo.updateDate);
         Log.d("Memo", memo.content);
 
+//<<<<<<< Updated upstream
+//
+//=======
+//>>>>>>> Stashed changes
     }
 
     @Override

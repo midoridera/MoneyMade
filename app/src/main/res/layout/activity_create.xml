@@ -23,7 +23,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/amiko"
                 android:gravity="center"
-                android:text="時給"
+                android:text="名前"
                 android:textSize="20sp" />
 
             <EditText
@@ -36,15 +36,6 @@
                 android:inputType="textPersonName"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/amiko"
-                android:gravity="center"
-                android:text="円"
-                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,8 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/amiko"
-                android:text="時間"
-                android:textSize="22sp" />
+                android:text="値段"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/contentEditText"
@@ -71,7 +62,17 @@
                 android:fontFamily="@font/amiko"
                 android:gravity="top"
                 android:inputType="textPersonName"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/amiko"
+                android:gravity="center"
+                android:text="円"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Button

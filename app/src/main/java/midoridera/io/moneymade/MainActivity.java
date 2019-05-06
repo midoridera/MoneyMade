@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     public Realm realm;
     public ListView listView;
 
+    TextView wantTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
         listView = (ListView) findViewById(R.id.listView);
+
+        wantTextView = (TextView) findViewById(R.id.wantTextView);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
