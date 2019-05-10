@@ -16,8 +16,8 @@ public class CreateActivity extends AppCompatActivity {
 
     public Realm realm;
 
-    public EditText titleEditText;
-    public EditText contentEditText;
+    public EditText thingEditText;
+    public EditText moneyEditText;
 
 
     @Override
@@ -27,8 +27,8 @@ public class CreateActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
-        titleEditText = (EditText) findViewById(R.id.titleEditText);
-        contentEditText = (EditText) findViewById(R.id.contentEditText);
+        thingEditText = (EditText) findViewById(R.id.thingEditText);
+        moneyEditText = (EditText) findViewById(R.id.moneyEditText);
     }
 
     public void save(final String title, final String updateDate, final String content){
@@ -45,14 +45,14 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     public void create(View view) {
-        String title = titleEditText.getText().toString();
+        String title = thingEditText.getText().toString();
 
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.JAPANESE);
         String updateDate = sdf.format(date);
 
 //<<<<<<< Updated upstream
-        String content = contentEditText.getText().toString();
+        String content = moneyEditText.getText().toString();
 //=======
 //        String content = timeH1EditText.getText().toString();
 //>>>>>>> Stashed changes

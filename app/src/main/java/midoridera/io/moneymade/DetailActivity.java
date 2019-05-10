@@ -11,8 +11,8 @@ public class DetailActivity extends AppCompatActivity {
 
     public Realm realm;
 
-    public EditText titleText;
-    public EditText contentText;
+    public EditText thingText;
+    public EditText moneyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +21,8 @@ public class DetailActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
-        titleText = (EditText) findViewById(R.id.titleEditText);
-        contentText = (EditText) findViewById(R.id.contentEditText);
+        thingText = (EditText) findViewById(R.id.thingEditText);
+        moneyText = (EditText) findViewById(R.id.moneyEditText);
 
         showDate();
 
@@ -32,8 +32,8 @@ public class DetailActivity extends AppCompatActivity {
         final Memo memo = realm.where(Memo.class).equalTo("updateDate",
                 getIntent().getStringExtra("updateDate")).findFirst();
 
-        titleText.setText(memo.title);
-        contentText.setText(memo.content);
+        thingText.setText(memo.title);
+        moneyText.setText(memo.content);
     }
 
     public void update(View view) {
@@ -43,8 +43,8 @@ public class DetailActivity extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                memo.title = titleText.getText().toString();
-                memo.content = contentText.getText().toString();
+                memo.title = thingText.getText().toString();
+                memo.content = moneyText.getText().toString();
             }
         });
 

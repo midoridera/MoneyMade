@@ -26,7 +26,7 @@
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/titleEditText"
+                android:id="@+id/thingEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -62,7 +62,7 @@
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/contentEditText"
+                android:id="@+id/moneyEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
