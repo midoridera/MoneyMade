@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView wantTextView;
 
     EditText jikyuEditText2;
-//    EditText timeEditText2;
 
     SharedPreferences pref;
 
