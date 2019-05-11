@@ -46,7 +46,7 @@
                 android:onClick="save"
                 android:text="登録"
                 android:textColor="@android:color/white"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,16 +63,6 @@
                 android:fontFamily="@font/amiko"
                 android:text="時間"
                 android:textSize="22sp" />
-
-            <!--<EditText-->
-            <!--android:id="@+id/timeEditText2"-->
-            <!--android:layout_width="225dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:fontFamily="@font/amiko"-->
-            <!--android:inputType="textPersonName"-->
-            <!--android:singleLine="true"-->
-            <!--android:textSize="22sp" />-->
 
             <TextView
                 android:id="@+id/timePickStartTextView"
@@ -130,18 +120,41 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/timeSumTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/amiko"
+            android:onClick="go"
+            android:text="Go!"
+            android:textColor="@android:color/white"
+            android:textSize="22sp" />
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:onClick="create"
         android:src="@drawable/ic_plus"
         android:text="作成"
+        app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal" />
 
 </RelativeLayout>

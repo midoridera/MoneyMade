@@ -42,6 +42,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     int minuteStart;
     int minuteEnd;
 
+    int hour;
+    int minute;
+
+    int hour1;
+    int minute1;
+    int hour2;
+    int minute2;
+
+    TextView timeSumTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,19 +64,29 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         wantTextView = (TextView) findViewById(R.id.wantTextView);
 
+        timeSumTextView = (TextView) findViewById(R.id.timeSumTextView);
+
         jikyuEditText2 = (EditText) findViewById(R.id.jikyuEditText2);
-//        timeEditText2 = (EditText) findViewById(R.id.timeEditText2);
 
         timePickStartTextView = (TextView)findViewById(R.id.timePickStartTextView);
         timePickEndTextView = (TextView)findViewById(R.id.timePickEndTextView);
 
         pref = getSharedPreferences("pref_memo", MODE_PRIVATE);
 
+        hour1 = pref.getInt("key_hour1", 0);
+        minute1 = pref.getInt("key_minute1", 0);
+        timePickStartTextView.setText(String.format(Locale.US, "%d:%d", hour1, minute1));
+
+        hour2 = pref.getInt("key_hour2", 0);
+        minute2 = pref.getInt("key_minute2", 0);
+        timePickEndTextView.setText(String.format(Locale.US, "%d:%d", hour2, minute2));
+
+
         jikyuEditText2.setText(pref.getString("key_jikyu", ""));
 //        timeEditText2.setText(pref.getString("key_time", ""));
 
-        timePickStartTextView.setText(pref.getString("key_time1", ""));
-        timePickEndTextView.setText(pref.getString("key_time2", ""));
+//        timePickStartTextView.setText(pref.getString("key_time1", ""));
+//        timePickEndTextView.setText(pref.getString("key_time2", ""));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -101,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 return true;
             }
         });
+
+
 
     }
 
@@ -156,7 +178,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             String timeStart = timePickStartTextView.getText().toString();
             SharedPreferences.Editor editor = pref.edit();
-            editor.putString("key_time1", timeStart);
+            editor.putInt("key_hour1", hourOfDay);
+            editor.putInt("key_minute1", minute);
             editor.commit();
 
         } else if (isPushedStart2) {
@@ -168,7 +191,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             String timeEnd = timePickEndTextView.getText().toString();
             SharedPreferences.Editor editor = pref.edit();
-            editor.putString("key_time2", timeEnd);
+            editor.putInt("key_hour2", hourOfDay);
+            editor.putInt("key_minute2", minute);
             editor.commit();
         }
 
@@ -186,6 +210,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         isPushedStart2 =true;
         DialogFragment newFragment = new TimePick();
         newFragment.show(getSupportFragmentManager(), "timePicker");
+
+    }
+
+    public  void go (View v) {
+
+        hour = hour2 - hour1;
+        minute = minute2 - minute1;
+
+        timeSumTextView.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
+
+//        Intent intent = new Intent(this, Memo2Activity.class);
+//        startActivity(intent);
 
     }
 
