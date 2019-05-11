@@ -14,7 +14,16 @@
             android:id="@+id/timeGoalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dp"
+            android:fontFamily="@font/amiko"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/jikyuGoalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="@font/amiko"
             android:textSize="22sp" />
 
@@ -23,9 +32,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/colorPrimary"
             android:fontFamily="@font/amiko"
             android:onClick="back"
             android:text="変更"
+            android:textColor="@android:color/white"
             android:textSize="22sp" />
     </LinearLayout>
 </RelativeLayout>

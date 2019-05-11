@@ -37,11 +37,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView timePickEndTextView;
     boolean isPushedStart1;
     boolean isPushedStart2;
-    int hourOfDayStart;
-    int hourOfDayEnd;
-    int minuteStart;
-    int minuteEnd;
 
+    int jikyu;
     int hour;
     int minute;
 
@@ -51,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     int minute2;
 
     TextView timeSumTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,10 +81,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         jikyuEditText2.setText(pref.getString("key_jikyu", ""));
-//        timeEditText2.setText(pref.getString("key_time", ""));
 
-//        timePickStartTextView.setText(pref.getString("key_time1", ""));
-//        timePickEndTextView.setText(pref.getString("key_time2", ""));
+        jikyu = Integer.parseInt(pref.getString("key_jikyu", ""));
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -155,13 +152,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         startActivity(intent);
     }
 
+
     public void save(View v) {
         String jikyuText = jikyuEditText2.getText().toString();
-//        String timeText = timeEditText2.getText().toString();
+
+        jikyu = Integer.parseInt(jikyuText);
 
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("key_jikyu", jikyuText);
-//        editor.putString("key_time", timeText);
         editor.commit();
 
 
@@ -172,8 +170,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if (isPushedStart1) {
             String str = String.format(Locale.US, "%d:%d", hourOfDay, minute);
             timePickStartTextView.setText(str);
-            hourOfDayStart = hourOfDay;
-            minuteStart = minute;
+            hour1 = hourOfDay;
+            minute1 = minute;
             isPushedStart1 = false;
 
             String timeStart = timePickStartTextView.getText().toString();
@@ -185,8 +183,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         } else if (isPushedStart2) {
             String str = String.format(Locale.US, "%d:%d", hourOfDay, minute);
             timePickEndTextView.setText(str);
-            hourOfDayEnd = hourOfDay;
-            minuteEnd = minute;
+            hour2 = hourOfDay;
+            minute2 = minute;
             isPushedStart2 = false;
 
             String timeEnd = timePickEndTextView.getText().toString();
@@ -223,6 +221,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Intent intent = new Intent(this, Memo2Activity.class);
         intent.putExtra("hour", hour);
         intent.putExtra("minute", minute);
+        intent.putExtra("jikyu", jikyu);
         startActivity(intent);
 
     }

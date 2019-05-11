@@ -19,6 +19,7 @@ public class CreateActivity extends AppCompatActivity {
     public EditText thingEditText;
     public EditText moneyEditText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,8 @@ public class CreateActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
-
+        thingEditText = (EditText) findViewById(R.id.thingEditText);
+        moneyEditText = (EditText) findViewById(R.id.moneyEditText);
     }
 
     public void save(final String title, final String updateDate, final String content){
@@ -51,11 +53,20 @@ public class CreateActivity extends AppCompatActivity {
 
         String content = moneyEditText.getText().toString();
 
-//        check(title,updateDate,content);
-
         save(title, updateDate, content);
 
         finish();
+    }
+
+    private void check(String title, String updateDate, String content) {
+        Memo memo = new Memo();
+        memo.title = title;
+        memo.updateDate = updateDate;
+        memo.content = content;
+
+        Log.d("Memo", memo.title);
+        Log.d("Memo", memo.updateDate);
+        Log.d("Memo", memo.content);
     }
 
     @Override
