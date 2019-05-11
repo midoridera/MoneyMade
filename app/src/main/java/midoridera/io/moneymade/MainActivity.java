@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         jikyuEditText2.setText(pref.getString("key_jikyu", ""));
 //        timeEditText2.setText(pref.getString("key_time", ""));
 
+        timePickStartTextView.setText(pref.getString("key_time1", ""));
+        timePickEndTextView.setText(pref.getString("key_time2", ""));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -151,14 +153,26 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             hourOfDayStart = hourOfDay;
             minuteStart = minute;
             isPushedStart1 = false;
+
+            String timeStart = timePickStartTextView.getText().toString();
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putString("key_time1", timeStart);
+            editor.commit();
+
         } else if (isPushedStart2) {
             String str = String.format(Locale.US, "%d:%d", hourOfDay, minute);
             timePickEndTextView.setText(str);
-            hourOfDayStart = hourOfDay;
-            minuteStart = minute;
+            hourOfDayEnd = hourOfDay;
+            minuteEnd = minute;
             isPushedStart2 = false;
 
+            String timeEnd = timePickEndTextView.getText().toString();
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putString("key_time2", timeEnd);
+            editor.commit();
         }
+
+
     }
 
     public void showTimePickerDialogStart(View v) {
