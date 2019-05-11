@@ -6,39 +6,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Memo2Activity extends AppCompatActivity {
 
-    EditText jikyuEditText;
-    EditText timeEditText;
+    TextView timeGoalText;
 
-    SharedPreferences pref;
+    int hour;
+    int minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo2);
 
-        jikyuEditText = (EditText) findViewById(R.id.jikyuEditText);
-        timeEditText = (EditText) findViewById(R.id.timeEditText);
+        timeGoalText = (TextView) findViewById(R.id.timeGoalText);
 
-        pref = getSharedPreferences("pref_memo", MODE_PRIVATE);
+        hour = getIntent().getIntExtra("hour",0);
+        minute = getIntent().getIntExtra("minute", 0);
 
-        jikyuEditText.setText(pref.getString("key_jikyu", ""));
-        timeEditText.setText(pref.getString("key_time", ""));
+        timeGoalText.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
+
 
     }
 
-    public void save(View v) {
-        String jikyuText = jikyuEditText.getText().toString();
-        String timeText = timeEditText.getText().toString();
+    public void back(View v) {
 
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("key_jikyu", jikyuText);
-        editor.putString("key_time", timeText);
-        editor.commit();
-
-        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
     }
 

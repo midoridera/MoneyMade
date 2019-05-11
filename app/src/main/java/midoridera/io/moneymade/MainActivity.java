@@ -220,8 +220,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         timeSumTextView.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
 
-//        Intent intent = new Intent(this, Memo2Activity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, Memo2Activity.class);
+        intent.putExtra("hour", hour);
+        intent.putExtra("minute", minute);
+        startActivity(intent);
 
     }
 
