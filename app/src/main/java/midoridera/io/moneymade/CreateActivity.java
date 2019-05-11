@@ -16,11 +16,8 @@ public class CreateActivity extends AppCompatActivity {
 
     public Realm realm;
 
-    public EditText titleEditText;
-    public EditText timeH1EditText;
-    public EditText timeM1EditText;
-    public EditText timeH2EditText;
-    public EditText timeM2EditText;
+    public EditText thingEditText;
+    public EditText moneyEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +26,10 @@ public class CreateActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
-        titleEditText = (EditText) findViewById(R.id.titleEditText);
-        timeH1EditText = (EditText) findViewById(R.id.timeH1EditText);
-        timeM1EditText = (EditText) findViewById(R.id.timeM1EditText);
-        timeH2EditText = (EditText) findViewById(R.id.timeH2EditText);
-        timeM2EditText = (EditText) findViewById(R.id.timeM2EditText);
+
     }
 
-    public void save(final String title, final String updateDate, final String content1, final String content2, final String content3, final String content4){
+    public void save(final String title, final String updateDate, final String content){
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -44,10 +37,7 @@ public class CreateActivity extends AppCompatActivity {
                 Memo memo = realm.createObject(Memo.class);
                 memo.title = title;
                 memo.updateDate = updateDate;
-                memo.content1 = content1;
-                memo.content2 = content2;
-                memo.content3 = content3;
-                memo.content4 = content4;
+                memo.content = content;
             }
         });
     }
@@ -60,35 +50,12 @@ public class CreateActivity extends AppCompatActivity {
         String updateDate = sdf.format(date);
 
         String content = moneyEditText.getText().toString();
-        String content1 = timeH1EditText.getText().toString();
-        String content2 = timeM1EditText.getText().toString();
-        String content3 = timeH2EditText.getText().toString();
-        String content4 = timeM2EditText.getText().toString();
 
 //        check(title,updateDate,content);
 
-        save(title, updateDate, content1, content2, content3, content4);
+        save(title, updateDate, content);
 
         finish();
-    }
-
-    private void check(String title, String updateDate, String content1, String content2, String content3, String content4) {
-        Memo memo = new Memo();
-
-        memo.title = title;
-        memo.updateDate = updateDate;
-        memo.content1 = content1;
-        memo.content2 = content2;
-        memo.content3 = content3;
-        memo.content4 = content4;
-
-        Log.d("Memo", memo.title);
-        Log.d("Memo", memo.updateDate);
-        Log.d("Memo", memo.content);
-        Log.d("Memo", memo.content1);
-        Log.d("Memo", memo.content2);
-        Log.d("Memo", memo.content3);
-        Log.d("Memo", memo.content4);
     }
 
     @Override
