@@ -33,8 +33,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     SharedPreferences pref;
 
-    TextView timePickTextView;
-    boolean isPushedStart;
+    TextView timePickStartTextView;
+    TextView timePickEndTextView;
+    boolean isPushedStart1;
+    boolean isPushedStart2;
     int hourOfDayStart;
     int hourOfDayEnd;
     int minuteStart;
@@ -44,7 +46,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        isPushedStart =false;
+        isPushedStart1 =false;
+        isPushedStart2 =false;
 
         realm = Realm.getDefaultInstance();
         listView = (ListView) findViewById(R.id.listView);
@@ -54,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         jikyuEditText2 = (EditText) findViewById(R.id.jikyuEditText2);
 //        timeEditText2 = (EditText) findViewById(R.id.timeEditText2);
 
-        timePickTextView = (TextView)findViewById(R.id.timePickTextView);
+        timePickStartTextView = (TextView)findViewById(R.id.timePickStartTextView);
+        timePickEndTextView = (TextView)findViewById(R.id.timePickEndTextView);
 
         pref = getSharedPreferences("pref_memo", MODE_PRIVATE);
 
@@ -141,21 +145,33 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        if(isPushedStart) {
+        if (isPushedStart1) {
             String str = String.format(Locale.US, "%d:%d", hourOfDay, minute);
-            timePickTextView.setText(str);
-            hourOfDayStart=hourOfDay;
-            minuteStart=minute;
-            isPushedStart = false;
+            timePickStartTextView.setText(str);
+            hourOfDayStart = hourOfDay;
+            minuteStart = minute;
+            isPushedStart1 = false;
+        } else if (isPushedStart2) {
+            String str = String.format(Locale.US, "%d:%d", hourOfDay, minute);
+            timePickEndTextView.setText(str);
+            hourOfDayStart = hourOfDay;
+            minuteStart = minute;
+            isPushedStart2 = false;
+
         }
     }
 
-    public void showTimePickerDialog(View v) {
-        isPushedStart =true;
+    public void showTimePickerDialogStart(View v) {
+        isPushedStart1 =true;
         DialogFragment newFragment = new TimePick();
         newFragment.show(getSupportFragmentManager(), "timePicker");
 
+    }
 
+    public void showTimePickerDialogEnd(View v) {
+        isPushedStart2 =true;
+        DialogFragment newFragment = new TimePick();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
 
     }
 
