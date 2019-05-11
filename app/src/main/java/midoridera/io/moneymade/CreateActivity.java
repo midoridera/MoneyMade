@@ -53,12 +53,13 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     public void create(View view) {
-        String title = titleEditText.getText().toString();
+        String title = thingEditText.getText().toString();
 
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.JAPANESE);
         String updateDate = sdf.format(date);
 
+        String content = moneyEditText.getText().toString();
         String content1 = timeH1EditText.getText().toString();
         String content2 = timeM1EditText.getText().toString();
         String content3 = timeH2EditText.getText().toString();
@@ -83,6 +84,7 @@ public class CreateActivity extends AppCompatActivity {
 
         Log.d("Memo", memo.title);
         Log.d("Memo", memo.updateDate);
+        Log.d("Memo", memo.content);
         Log.d("Memo", memo.content1);
         Log.d("Memo", memo.content2);
         Log.d("Memo", memo.content3);

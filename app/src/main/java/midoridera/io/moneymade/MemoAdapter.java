@@ -27,6 +27,12 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
             convertView = layoutinflater.inflate(R.layout.layout_item_memo, null);
         }
 
+        TextView thingText = (TextView) convertView.findViewById(R.id.thingText);
+        TextView moneyText = (TextView) convertView.findViewById(R.id.moneyText);
+
+        thingText.setText(memo.title);
+        moneyText.setText(memo.content);
+      
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
         TextView content1Text = (TextView) convertView.findViewById(R.id.content1Text);
         TextView content2Text = (TextView) convertView.findViewById(R.id.content2Text);
