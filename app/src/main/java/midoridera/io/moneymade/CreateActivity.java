@@ -16,9 +16,11 @@ public class CreateActivity extends AppCompatActivity {
 
     public Realm realm;
 
-    public EditText thingEditText;
-    public EditText moneyEditText;
-
+    public EditText titleEditText;
+    public EditText timeH1EditText;
+    public EditText timeM1EditText;
+    public EditText timeH2EditText;
+    public EditText timeM2EditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,14 @@ public class CreateActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
-        thingEditText = (EditText) findViewById(R.id.thingEditText);
-        moneyEditText = (EditText) findViewById(R.id.moneyEditText);
+        titleEditText = (EditText) findViewById(R.id.titleEditText);
+        timeH1EditText = (EditText) findViewById(R.id.timeH1EditText);
+        timeM1EditText = (EditText) findViewById(R.id.timeM1EditText);
+        timeH2EditText = (EditText) findViewById(R.id.timeH2EditText);
+        timeM2EditText = (EditText) findViewById(R.id.timeM2EditText);
     }
 
-    public void save(final String title, final String updateDate, final String content){
+    public void save(final String title, final String updateDate, final String content1, final String content2, final String content3, final String content4){
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -39,7 +44,10 @@ public class CreateActivity extends AppCompatActivity {
                 Memo memo = realm.createObject(Memo.class);
                 memo.title = title;
                 memo.updateDate = updateDate;
-                memo.content = content;
+                memo.content1 = content1;
+                memo.content2 = content2;
+                memo.content3 = content3;
+                memo.content4 = content4;
             }
         });
     }
@@ -51,34 +59,36 @@ public class CreateActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.JAPANESE);
         String updateDate = sdf.format(date);
 
-//<<<<<<< Updated upstream
         String content = moneyEditText.getText().toString();
-//=======
-//        String content = timeH1EditText.getText().toString();
-//>>>>>>> Stashed changes
+        String content1 = timeH1EditText.getText().toString();
+        String content2 = timeM1EditText.getText().toString();
+        String content3 = timeH2EditText.getText().toString();
+        String content4 = timeM2EditText.getText().toString();
 
 //        check(title,updateDate,content);
 
-        save(title, updateDate, content);
+        save(title, updateDate, content1, content2, content3, content4);
 
         finish();
     }
 
-    private void check(String title, String updateDate, String content) {
+    private void check(String title, String updateDate, String content1, String content2, String content3, String content4) {
         Memo memo = new Memo();
 
         memo.title = title;
         memo.updateDate = updateDate;
-        memo.content = content;
+        memo.content1 = content1;
+        memo.content2 = content2;
+        memo.content3 = content3;
+        memo.content4 = content4;
 
         Log.d("Memo", memo.title);
         Log.d("Memo", memo.updateDate);
         Log.d("Memo", memo.content);
-
-//<<<<<<< Updated upstream
-//
-//=======
-//>>>>>>> Stashed changes
+        Log.d("Memo", memo.content1);
+        Log.d("Memo", memo.content2);
+        Log.d("Memo", memo.content3);
+        Log.d("Memo", memo.content4);
     }
 
     @Override
