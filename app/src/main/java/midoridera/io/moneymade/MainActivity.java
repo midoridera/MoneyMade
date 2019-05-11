@@ -1,8 +1,10 @@
 package midoridera.io.moneymade;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,13 +12,16 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.util.List;
+
+import java.util.Locale;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
     public Realm realm;
     public ListView listView;
@@ -24,14 +29,22 @@ public class MainActivity extends AppCompatActivity {
     TextView wantTextView;
 
     EditText jikyuEditText2;
-    EditText timeEditText2;
+//    EditText timeEditText2;
 
     SharedPreferences pref;
+
+    TextView timePickTextView;
+    boolean isPushedStart;
+    int hourOfDayStart;
+    int hourOfDayEnd;
+    int minuteStart;
+    int minuteEnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        isPushedStart =false;
 
         realm = Realm.getDefaultInstance();
         listView = (ListView) findViewById(R.id.listView);
@@ -39,12 +52,14 @@ public class MainActivity extends AppCompatActivity {
         wantTextView = (TextView) findViewById(R.id.wantTextView);
 
         jikyuEditText2 = (EditText) findViewById(R.id.jikyuEditText2);
-        timeEditText2 = (EditText) findViewById(R.id.timeEditText2);
+//        timeEditText2 = (EditText) findViewById(R.id.timeEditText2);
+
+        timePickTextView = (TextView)findViewById(R.id.timePickTextView);
 
         pref = getSharedPreferences("pref_memo", MODE_PRIVATE);
 
         jikyuEditText2.setText(pref.getString("key_jikyu", ""));
-        timeEditText2.setText(pref.getString("key_time", ""));
+//        timeEditText2.setText(pref.getString("key_time", ""));
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -114,23 +129,34 @@ public class MainActivity extends AppCompatActivity {
 
     public void save(View v) {
         String jikyuText = jikyuEditText2.getText().toString();
-        String timeText = timeEditText2.getText().toString();
+//        String timeText = timeEditText2.getText().toString();
 
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("key_jikyu", jikyuText);
-        editor.putString("key_time", timeText);
+//        editor.putString("key_time", timeText);
         editor.commit();
 
-        //finish();
 
     }
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        if(isPushedStart) {
+            String str = String.format(Locale.US, "%d:%d", hourOfDay, minute);
+            timePickTextView.setText(str);
+            hourOfDayStart=hourOfDay;
+            minuteStart=minute;
+            isPushedStart = false;
+        }
+    }
 
-//    public void memo(View v) {
-//
-//        Intent intent = new Intent(this, Memo2Activity.class);
-//        startActivity(intent);
-//
-//    }
+    public void showTimePickerDialog(View v) {
+        isPushedStart =true;
+        DialogFragment newFragment = new TimePick();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+
+
+
+    }
 
 }

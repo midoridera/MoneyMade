@@ -48,14 +48,29 @@
                 android:text="時間"
                 android:textSize="22sp" />
 
-            <EditText
-                android:id="@+id/timeEditText2"
+            <!--<EditText-->
+                <!--android:id="@+id/timeEditText2"-->
+                <!--android:layout_width="225dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ems="10"-->
+                <!--android:fontFamily="@font/amiko"-->
+                <!--android:inputType="textPersonName"-->
+                <!--android:singleLine="true"-->
+                <!--android:textSize="22sp" />-->
+
+            <TextView
+                android:id="@+id/timePickTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:fontFamily="@font/amiko"
-                android:inputType="textPersonName"
-                android:singleLine="true"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="showTimePickerDialog"
+                android:text="Time"
                 android:textSize="22sp" />
         </LinearLayout>
 
@@ -69,6 +84,7 @@
             android:gravity="center_horizontal"
             android:onClick="save"
             android:text="登録"
+            android:textColor="@android:color/white"
             android:textSize="22sp" />
 
         <TextView
