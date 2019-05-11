@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     EditText jikyuEditText2;
     EditText timeEditText2;
 
-//    SharedPreferences pref;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
         jikyuEditText2 = (EditText) findViewById(R.id.jikyuEditText2);
         timeEditText2 = (EditText) findViewById(R.id.timeEditText2);
-//
-//        pref = getSharedPreferences("pref_memo", MODE_PRIVATE);
+
+        pref = getSharedPreferences("pref_memo", MODE_PRIVATE);
+
+        jikyuEditText2.setText(pref.getString("key_jikyu", ""));
+        timeEditText2.setText(pref.getString("key_time", ""));
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,6 +57,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Memo memo = (Memo) adapterView.getItemAtPosition(position);
+
+                ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
+
+//                String item = (String) adapter.getItem(position);
+                adapter.remove(memo);
+
+                final Memo targetMemo = realm.where(Memo.class).equalTo("updateDate",
+                        memo.updateDate).findFirst();
+
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        targetMemo.deleteFromRealm();
+                    }
+                });
+
+                return true;
+            }
+        });
 
     }
 
@@ -84,28 +112,25 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void save(View v) {
-//        String jikyuText = jikyuEditText.getText().toString();
-//        String timeText = timeEditText.getText().toString();
-//
-//        SharedPreferences.Editor editor = pref.edit();
-//        editor.putString("key_jikyu", jikyuText);
-//        editor.putString("key_time", timeText);
-//        editor.commit();
-//
-//        finish();
-//
-//        jikyuEditText.setText(pref.getString("key_jikyu", ""));
-//        timeEditText.setText(pref.getString("key_time", ""));
-//
-//    }
+    public void save(View v) {
+        String jikyuText = jikyuEditText2.getText().toString();
+        String timeText = timeEditText2.getText().toString();
 
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("key_jikyu", jikyuText);
+        editor.putString("key_time", timeText);
+        editor.commit();
 
-    public void memo(View v) {
-
-        Intent intent = new Intent(this, Memo2Activity.class);
-        startActivity(intent);
+        //finish();
 
     }
+
+
+//    public void memo(View v) {
+//
+//        Intent intent = new Intent(this, Memo2Activity.class);
+//        startActivity(intent);
+//
+//    }
 
 }
