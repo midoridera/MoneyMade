@@ -19,6 +19,7 @@ public class Memo2Activity extends AppCompatActivity {
 
     TextView timeGoalText;
     TextView jikyuGoalText;
+    TextView dayText;
 
     int jikyu;
     int hour;
@@ -38,6 +39,7 @@ public class Memo2Activity extends AppCompatActivity {
 
         timeGoalText = (TextView) findViewById(R.id.timeGoalText);
         jikyuGoalText = (TextView) findViewById(R.id.jikyuGoalText);
+        dayText = (TextView) findViewById(R.id.dayText);
 
         wantList = (ListView) findViewById(R.id.wantList);
 
@@ -45,9 +47,12 @@ public class Memo2Activity extends AppCompatActivity {
         hour = getIntent().getIntExtra("hour",0);
         minute = getIntent().getIntExtra("minute", 0);
 
+        kaisu = jikyu * hour;
+        
 
         timeGoalText.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
         jikyuGoalText.setText(String.valueOf(jikyu));
+        dayText.setText("あと" + String.valueOf(kaisu) + "日！");
 
     }
 

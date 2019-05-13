@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         hour = hour2 - hour1;
         minute = minute2 - minute1;
 
-        timeSumTextView.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
+//        timeSumTextView.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
 
         Intent intent = new Intent(this, Memo2Activity.class);
         intent.putExtra("hour", hour);
