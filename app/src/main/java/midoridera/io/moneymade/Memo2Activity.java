@@ -47,8 +47,12 @@ public class Memo2Activity extends AppCompatActivity {
         hour = getIntent().getIntExtra("hour",0);
         minute = getIntent().getIntExtra("minute", 0);
 
+
         kaisu = jikyu * hour;
-        
+
+        if (minute > 0) {
+            kaisu = kaisu + 1;
+        }
 
         timeGoalText.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
         jikyuGoalText.setText(String.valueOf(jikyu));
@@ -82,8 +86,6 @@ public class Memo2Activity extends AppCompatActivity {
 
 
     public void back(View v) {
-
-
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

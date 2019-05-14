@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     }
                 });
 
+
                 return true;
             }
         });
@@ -121,6 +122,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
     }
+
+
 
     public void setMemoList() {
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
@@ -214,6 +217,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         hour = hour2 - hour1;
         minute = minute2 - minute1;
+
+        if (minute < 0) {
+            hour = hour - 1;
+            minute = minute + 60;
+        }
 
 //        timeSumTextView.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
 

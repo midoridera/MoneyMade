@@ -31,6 +31,7 @@
                 android:layout_marginLeft="5dp"
                 android:ems="10"
                 android:fontFamily="@font/amiko"
+                android:gravity="center_horizontal"
                 android:inputType="textPersonName"
                 android:singleLine="true"
                 android:textSize="22sp" />
@@ -71,19 +72,29 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
+                android:onClick="showTimePickerDialogStart"
                 android:textSize="22sp" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="0dp"
+            <!--<Button-->
+                <!--android:id="@+id/button4"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:backgroundTint="@color/colorPrimary"-->
+                <!--android:fontFamily="@font/amiko"-->
+                <!--android:onClick="showTimePickerDialogStart"-->
+                <!--android:text="start"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="18sp" />-->
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
                 android:fontFamily="@font/amiko"
-                android:onClick="showTimePickerDialogStart"
-                android:text="start"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
+                android:gravity="center"
+                android:text="~"
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/timePickEndTextView"
@@ -92,18 +103,20 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/amiko"
                 android:gravity="center_horizontal"
+                android:onClick="showTimePickerDialogEnd"
                 android:textSize="22sp" />
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:fontFamily="@font/amiko"
-                android:onClick="showTimePickerDialogEnd"
-                android:text="end"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
+            <!--<Button-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:backgroundTint="@color/colorPrimary"-->
+                <!--android:fontFamily="@font/amiko"-->
+                <!--android:onClick="showTimePickerDialogEnd"-->
+                <!--android:text="end"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="18sp" />-->
+
         </LinearLayout>
 
         <TextView
