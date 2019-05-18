@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -24,6 +25,8 @@ public class Memo2Activity extends AppCompatActivity {
     int jikyu;
     int hour;
     int minute;
+
+    int goukei;
 
     int kaisu;
 
@@ -47,15 +50,26 @@ public class Memo2Activity extends AppCompatActivity {
         hour = getIntent().getIntExtra("hour",0);
         minute = getIntent().getIntExtra("minute", 0);
 
+        goukei = 0;
 
-        kaisu = jikyu * hour;
+
+        RealmResults<Memo> results = realm.where(Memo.class).findAll();
+        List<Memo> items = new ArrayList<Memo>(results);
+
+        for (Memo memos : items ){
+
+            goukei += Integer.parseInt(memos.content) ;
+        }
+
+
+        kaisu = goukei / (jikyu * hour);
 
         if (minute > 0) {
             kaisu = kaisu + 1;
         }
 
         timeGoalText.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
-        jikyuGoalText.setText(String.valueOf(jikyu));
+        jikyuGoalText.setText(String.valueOf(goukei) + "円");
         dayText.setText("あと" + String.valueOf(kaisu) + "日！");
 
     }

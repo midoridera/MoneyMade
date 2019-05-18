@@ -64,6 +64,7 @@ public class CreateActivity extends AppCompatActivity {
         memo.updateDate = updateDate;
         memo.content = content;
 
+
         Log.d("Memo", memo.title);
         Log.d("Memo", memo.updateDate);
         Log.d("Memo", memo.content);

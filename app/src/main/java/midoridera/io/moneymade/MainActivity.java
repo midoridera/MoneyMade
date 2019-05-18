@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         jikyuEditText2.setText(pref.getString("key_jikyu", ""));
 
-        jikyu = Integer.parseInt(pref.getString("key_jikyu", ""));
+        jikyu = Integer.parseInt(pref.getString("key_jikyu", "0"));
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                 ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
 
-//                String item = (String) adapter.getItem(position);
                 adapter.remove(memo);
 
                 final Memo targetMemo = realm.where(Memo.class).equalTo("updateDate",
@@ -113,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                         targetMemo.deleteFromRealm();
                     }
                 });
+
 
 
                 return true;
@@ -223,12 +223,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             minute = minute + 60;
         }
 
-//        timeSumTextView.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
 
         Intent intent = new Intent(this, Memo2Activity.class);
         intent.putExtra("hour", hour);
         intent.putExtra("minute", minute);
         intent.putExtra("jikyu", jikyu);
+
         startActivity(intent);
 
     }

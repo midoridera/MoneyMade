@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/amiko"
-            android:textSize="22sp" />
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/timeGoalText"
@@ -38,7 +38,7 @@
             android:id="@+id/jikyuGoalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@font/amiko"
             android:textSize="22sp" />
 
