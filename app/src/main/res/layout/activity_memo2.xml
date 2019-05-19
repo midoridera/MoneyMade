@@ -10,56 +10,73 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="270dp"
-            android:layout_height="248dp"
-            android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/clock1" />
-
-        <TextView
-            android:id="@+id/dayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/amiko"
-            android:textSize="36sp" />
-
-        <TextView
-            android:id="@+id/timeGoalText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/amiko"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/jikyuGoalText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/amiko"
-            android:textSize="22sp" />
-
-        <ListView
-            android:id="@+id/wantList"
+        <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="280dp"
+            android:orientation="vertical"></LinearLayout>
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/background_button3"
-            android:backgroundTint="@color/colorPrimary"
-            android:fontFamily="@font/amiko"
-            android:onClick="back"
-            android:text="変更"
-            android:textColor="@android:color/white"
-            android:textSize="22sp" />
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="270dp"-->
+            <!--android:layout_height="248dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--app:srcCompat="@drawable/clock1" />-->
+
+            <TextView
+                android:id="@+id/dayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amiko"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/timeGoalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amiko"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/jikyuGoalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/amiko"
+                android:textSize="22sp" />
+
+            <ListView
+                android:id="@+id/wantList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_button3"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/amiko"
+                android:onClick="back"
+                android:text="変更"
+                android:textColor="@android:color/white"
+                android:textSize="22sp" />
+        </LinearLayout>
     </LinearLayout>
+
 </RelativeLayout>

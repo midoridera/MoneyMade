@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,6 +37,9 @@ public class Memo2Activity extends AppCompatActivity {
     public Realm realm;
     public ListView wantList;
 
+    Wacth clock;
+    LinearLayout container;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,18 +47,19 @@ public class Memo2Activity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
+        container = (LinearLayout) findViewById(R.id.container);
         timeGoalText = (TextView) findViewById(R.id.timeGoalText);
         jikyuGoalText = (TextView) findViewById(R.id.jikyuGoalText);
         dayText = (TextView) findViewById(R.id.dayText);
-
         wantList = (ListView) findViewById(R.id.wantList);
+
+        clock = new Wacth(R.drawable.clock1);
+
 
         jikyu = getIntent().getIntExtra("jikyu", 0);
         hour = getIntent().getIntExtra("hour",0);
         minute = getIntent().getIntExtra("minute", 0);
-
         goukei = 0;
-
 
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
         List<Memo> items = new ArrayList<Memo>(results);
@@ -65,7 +71,6 @@ public class Memo2Activity extends AppCompatActivity {
 
 
         kaisu = goukei / (jikyu * hour + jikyu * minute / 60);
-
         hasu = goukei % (jikyu * hour + jikyu * minute / 60);
 
         if (hasu > 0) {
@@ -76,6 +81,22 @@ public class Memo2Activity extends AppCompatActivity {
         jikyuGoalText.setText(String.valueOf(goukei) + "円");
         dayText.setText("あと" + String.valueOf(kaisu) + "日！");
 
+//        for (int i = 0; i < goukei; i++) {
+            addWacth(clock);
+//        }
+
+    }
+
+    public void addWacth(Wacth wacth){
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.HORIZONTAL);
+
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(clock.resId);
+
+        layout.addView(imageView);
+
+        container.addView(layout);
     }
 
     public void setMemoList() {
