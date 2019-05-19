@@ -28,6 +28,8 @@ public class Memo2Activity extends AppCompatActivity {
 
     int goukei;
 
+    int hasu;
+
     int kaisu;
 
     public Realm realm;
@@ -62,9 +64,11 @@ public class Memo2Activity extends AppCompatActivity {
         }
 
 
-        kaisu = goukei / (jikyu * hour);
+        kaisu = goukei / (jikyu * hour + jikyu * minute / 60);
 
-        if (minute > 0) {
+        hasu = goukei % (jikyu * hour + jikyu * minute / 60);
+
+        if (hasu > 0) {
             kaisu = kaisu + 1;
         }
 
