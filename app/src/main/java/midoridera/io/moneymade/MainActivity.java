@@ -113,8 +113,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     }
                 });
 
-
-
                 return true;
             }
         });

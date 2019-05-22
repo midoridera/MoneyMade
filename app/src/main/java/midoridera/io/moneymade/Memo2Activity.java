@@ -2,6 +2,7 @@ package midoridera.io.moneymade;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,9 +21,13 @@ import io.realm.RealmResults;
 
 public class Memo2Activity extends AppCompatActivity {
 
+    LinearLayout.LayoutParams layoutParams;
+
     TextView timeGoalText;
     TextView jikyuGoalText;
     TextView dayText;
+
+    ImageView[] image;
 
     int jikyu;
     int hour;
@@ -64,6 +69,7 @@ public class Memo2Activity extends AppCompatActivity {
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
         List<Memo> items = new ArrayList<Memo>(results);
 
+
         for (Memo memos : items ){
 
             goukei += Integer.parseInt(memos.content) ;
@@ -81,22 +87,40 @@ public class Memo2Activity extends AppCompatActivity {
         jikyuGoalText.setText(String.valueOf(goukei) + "円");
         dayText.setText("あと" + String.valueOf(kaisu) + "日！");
 
-//        for (int i = 0; i < goukei; i++) {
-            addWacth(clock);
-//        }
+
+        addWacth(clock);
 
     }
 
     public void addWacth(Wacth wacth){
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.HORIZONTAL);
 
-        ImageView imageView = new ImageView(this);
-        imageView.setImageResource(clock.resId);
+        for (int i = 0; i < goukei; i++) {
 
-        layout.addView(imageView);
 
-        container.addView(layout);
+            LinearLayout layout = new LinearLayout(this);
+            layout.setOrientation(LinearLayout.HORIZONTAL);
+
+            image = new ImageView[goukei];
+
+
+            image[i] = new ImageView(this);
+            image[i].setImageResource(clock.resId);
+
+            int imageWidth = 0;
+
+            //画像サイズを変える
+            layoutParams = new LinearLayout.LayoutParams(
+                    imageWidth,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.weight = 1.0f;
+            image[i].setLayoutParams(layoutParams);
+
+            layout.addView(image[i]);
+
+            container.addView(layout);
+
+        }
+
     }
 
     public void setMemoList() {
