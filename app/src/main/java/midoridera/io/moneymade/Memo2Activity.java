@@ -23,7 +23,7 @@ public class Memo2Activity extends AppCompatActivity {
 
     LinearLayout.LayoutParams layoutParams;
 
-    TextView timeGoalText;
+//    TextView timeGoalText;
     TextView jikyuGoalText;
     TextView dayText;
 
@@ -53,7 +53,7 @@ public class Memo2Activity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         container = (LinearLayout) findViewById(R.id.container);
-        timeGoalText = (TextView) findViewById(R.id.timeGoalText);
+//        timeGoalText = (TextView) findViewById(R.id.timeGoalText);
         jikyuGoalText = (TextView) findViewById(R.id.jikyuGoalText);
         dayText = (TextView) findViewById(R.id.dayText);
         wantList = (ListView) findViewById(R.id.wantList);
@@ -83,8 +83,8 @@ public class Memo2Activity extends AppCompatActivity {
             kaisu = kaisu + 1;
         }
 
-        timeGoalText.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
-        jikyuGoalText.setText(String.valueOf(goukei) + "円");
+//        timeGoalText.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
+        jikyuGoalText.setText("合計" + String.valueOf(goukei) + "円");
         dayText.setText("あと" + String.valueOf(kaisu) + "日！");
 
 

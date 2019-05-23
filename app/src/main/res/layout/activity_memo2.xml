@@ -36,17 +36,17 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/amiko"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
 
-            <TextView
-                android:id="@+id/timeGoalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/amiko"
-                android:textSize="22sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/timeGoalText"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:fontFamily="@font/amiko"-->
+                <!--android:textSize="22sp" />-->
 
             <TextView
                 android:id="@+id/jikyuGoalText"
