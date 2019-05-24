@@ -94,32 +94,32 @@ public class Memo2Activity extends AppCompatActivity {
 
     public void addWacth(Wacth wacth){
 
-        for (int i = 0; i < goukei; i++) {
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.HORIZONTAL);
+
+            for (int i = 0; i < goukei; i++) {
+
+                image = new ImageView[goukei];
 
 
-            LinearLayout layout = new LinearLayout(this);
-            layout.setOrientation(LinearLayout.HORIZONTAL);
+                image[i] = new ImageView(this);
+                image[i].setImageResource(clock.resId);
 
-            image = new ImageView[goukei];
+                int imageWidth = 0;
 
+                //画像サイズを変える
+                layoutParams = new LinearLayout.LayoutParams(
+                        imageWidth,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                layoutParams.weight = 1.0f;
+                image[i].setLayoutParams(layoutParams);
 
-            image[i] = new ImageView(this);
-            image[i].setImageResource(clock.resId);
+                layout.addView(image[i]);
 
-            int imageWidth = 0;
+            }
 
-            //画像サイズを変える
-            layoutParams = new LinearLayout.LayoutParams(
-                    imageWidth,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.weight = 1.0f;
-            image[i].setLayoutParams(layoutParams);
+        container.addView(layout);
 
-            layout.addView(image[i]);
-
-            container.addView(layout);
-
-        }
 
     }
 
