@@ -23,7 +23,6 @@ public class Memo2Activity extends AppCompatActivity {
 
     LinearLayout.LayoutParams layoutParams;
 
-//    TextView timeGoalText;
     TextView jikyuGoalText;
     TextView dayText;
 
@@ -53,12 +52,11 @@ public class Memo2Activity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         container = (LinearLayout) findViewById(R.id.container);
-//        timeGoalText = (TextView) findViewById(R.id.timeGoalText);
         jikyuGoalText = (TextView) findViewById(R.id.jikyuGoalText);
         dayText = (TextView) findViewById(R.id.dayText);
         wantList = (ListView) findViewById(R.id.wantList);
 
-        clock = new Wacth(R.drawable.clock1);
+        clock = new Wacth(R.drawable.clock2);
 
 
         jikyu = getIntent().getIntExtra("jikyu", 0);
@@ -83,7 +81,6 @@ public class Memo2Activity extends AppCompatActivity {
             kaisu = kaisu + 1;
         }
 
-//        timeGoalText.setText(String.valueOf(hour)+":"+ String.valueOf(minute));
         jikyuGoalText.setText("合計" + String.valueOf(goukei) + "円");
         dayText.setText("あと" + String.valueOf(kaisu) + "日！");
 
@@ -97,9 +94,9 @@ public class Memo2Activity extends AppCompatActivity {
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.HORIZONTAL);
 
-            for (int i = 0; i < goukei; i++) {
+            for (int i = 0; i < kaisu; i++) {
 
-                image = new ImageView[goukei];
+                image = new ImageView[kaisu];
 
 
                 image[i] = new ImageView(this);
@@ -109,7 +106,7 @@ public class Memo2Activity extends AppCompatActivity {
 
                 //画像サイズを変える
                 layoutParams = new LinearLayout.LayoutParams(
-                        imageWidth,
+                        0,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
                 layoutParams.weight = 1.0f;
                 image[i].setLayoutParams(layoutParams);
