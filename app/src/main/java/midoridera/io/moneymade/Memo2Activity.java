@@ -82,7 +82,7 @@ public class Memo2Activity extends AppCompatActivity {
         }
 
         jikyuGoalText.setText("合計" + String.valueOf(goukei) + "円");
-        dayText.setText("あと" + String.valueOf(kaisu) + "日！");
+        dayText.setText(String.valueOf(kaisu));
 
 
         addWacth(clock);
