@@ -34,12 +34,12 @@ public class Memo2Activity extends AppCompatActivity {
 
     int goukei;
 
-    int hasu;
-
     int kaisu;
 
     public Realm realm;
     public ListView wantList;
+
+    SharedPreferences pref;
 
     Wacth clock;
     LinearLayout container;
@@ -50,6 +50,7 @@ public class Memo2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_memo2);
 
         realm = Realm.getDefaultInstance();
+        pref = getSharedPreferences("pref_memo", MODE_PRIVATE);
 
         container = (LinearLayout) findViewById(R.id.container);
         jikyuGoalText = (TextView) findViewById(R.id.jikyuGoalText);
@@ -62,24 +63,12 @@ public class Memo2Activity extends AppCompatActivity {
         jikyu = getIntent().getIntExtra("jikyu", 0);
         hour = getIntent().getIntExtra("hour",0);
         minute = getIntent().getIntExtra("minute", 0);
-        goukei = 0;
-
-        RealmResults<Memo> results = realm.where(Memo.class).findAll();
-        List<Memo> items = new ArrayList<Memo>(results);
+        goukei = getIntent().getIntExtra("goukei",0);
+        kaisu = getIntent().getIntExtra("kaisu",0);
 
 
-        for (Memo memos : items ){
+        kaisu = pref.getInt("key_nankai", 0);
 
-            goukei += Integer.parseInt(memos.content) ;
-        }
-
-
-        kaisu = goukei / (jikyu * hour + jikyu * minute / 60);
-        hasu = goukei % (jikyu * hour + jikyu * minute / 60);
-
-        if (hasu > 0) {
-            kaisu = kaisu + 1;
-        }
 
         jikyuGoalText.setText("合計" + String.valueOf(goukei) + "円");
         dayText.setText(String.valueOf(kaisu));
@@ -144,6 +133,24 @@ public class Memo2Activity extends AppCompatActivity {
 
     }
 
+    public void work(View v){
+
+        if (kaisu > 0) {
+            kaisu = kaisu - 1;
+            dayText.setText(String.valueOf(kaisu));
+        } else{
+            kaisu = getIntent().getIntExtra("kaisu",0);
+            dayText.setText(String.valueOf(kaisu));
+        }
+
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("key_nankai", kaisu);
+        editor.commit();
+
+        clock = new Wacth(R.drawable.clock2);
+        addWacth(clock);
+
+    }
 
     public void back(View v) {
 

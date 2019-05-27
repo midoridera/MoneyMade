@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Locale;
@@ -40,6 +41,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     int jikyu;
     int hour;
     int minute;
+
+    int goukei;
+    int kaisu;
+    int hasu;
 
     int hour1;
     int minute1;
@@ -221,11 +226,29 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             minute = minute + 60;
         }
 
+        RealmResults<Memo> results = realm.where(Memo.class).findAll();
+        List<Memo> items = new ArrayList<Memo>(results);
+
+
+        for (Memo memos : items ){
+
+            goukei += Integer.parseInt(memos.content) ;
+        }
+
+        kaisu = goukei / (jikyu * hour + jikyu * minute / 60);
+        hasu = goukei % (jikyu * hour + jikyu * minute / 60);
+
+        if (hasu > 0) {
+            kaisu = kaisu + 1;
+        }
+
 
         Intent intent = new Intent(this, Memo2Activity.class);
         intent.putExtra("hour", hour);
         intent.putExtra("minute", minute);
         intent.putExtra("jikyu", jikyu);
+        intent.putExtra("goukei", goukei);
+        intent.putExtra("kaisu",kaisu);
 
         startActivity(intent);
 
