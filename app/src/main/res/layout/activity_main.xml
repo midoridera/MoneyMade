@@ -12,147 +12,143 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_marginRight="15dp"
+            android:background="@android:color/white"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/amiko"
-                android:text="時給"
-                android:textSize="22sp" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/jikyuEditText2"
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:ems="10"
-                android:fontFamily="@font/amiko"
-                android:gravity="center_horizontal"
-                android:hint="985"
-                android:inputType="textPersonName"
-                android:singleLine="true"
-                android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/amiko"
+                    android:text="時給"
+                    android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="円"
-                android:textSize="22sp" />
+                <EditText
+                    android:id="@+id/jikyuEditText2"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:ems="10"
+                    android:fontFamily="@font/amiko"
+                    android:gravity="center_horizontal"
+                    android:hint="985"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textSize="22sp" />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="円"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/background_button3"
+                    android:fontFamily="@font/amiko"
+                    android:gravity="center"
+                    android:onClick="save"
+                    android:text="登録"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/background_button3"
-                android:fontFamily="@font/amiko"
-                android:gravity="center"
-                android:onClick="save"
-                android:text="登録"
-                android:textColor="@android:color/white"
-                android:textSize="22sp" />
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/amiko"
+                    android:text="時間"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/timePickStartTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:hint="00:00"
+                    android:onClick="showTimePickerDialogStart"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amiko"
+                    android:gravity="center"
+                    android:text="~"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/timePickEndTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/amiko"
+                    android:gravity="center_horizontal"
+                    android:hint="00:00"
+                    android:onClick="showTimePickerDialogEnd"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
+
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/wantTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/amiko"
-                android:text="時間"
-                android:textSize="22sp" />
-
-            <TextView
-                android:id="@+id/timePickStartTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:hint="00:00"
-                android:onClick="showTimePickerDialogStart"
-                android:textSize="22sp" />
-
-            <!--<Button-->
-            <!--android:id="@+id/button4"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:backgroundTint="@color/colorPrimary"-->
-            <!--android:fontFamily="@font/amiko"-->
-            <!--android:onClick="showTimePickerDialogStart"-->
-            <!--android:text="start"-->
-            <!--android:textColor="@android:color/white"-->
-            <!--android:textSize="18sp" />-->
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/amiko"
-                android:gravity="center"
-                android:text="~"
+                android:text="欲しいもの"
                 android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/timePickEndTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/amiko"
-                android:gravity="center_horizontal"
-                android:hint="00:00"
-                android:onClick="showTimePickerDialogEnd"
-                android:textSize="22sp" />
-
-            <!--<Button-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:backgroundTint="@color/colorPrimary"-->
-            <!--android:fontFamily="@font/amiko"-->
-            <!--android:onClick="showTimePickerDialogEnd"-->
-            <!--android:text="end"-->
-            <!--android:textColor="@android:color/white"-->
-            <!--android:textSize="18sp" />-->
-
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="452dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/wantTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/amiko"
-            android:text="欲しいもの"
-            android:textSize="22sp" />
-
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/timeSumTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="22sp" />
 
         <Button
             android:id="@+id/button7"

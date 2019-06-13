@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         wantTextView = (TextView) findViewById(R.id.wantTextView);
 
-        timeSumTextView = (TextView) findViewById(R.id.timeSumTextView);
-
         jikyuEditText2 = (EditText) findViewById(R.id.jikyuEditText2);
 
         timePickStartTextView = (TextView)findViewById(R.id.timePickStartTextView);

@@ -107,14 +107,13 @@ public class Memo2Activity extends AppCompatActivity {
 
         nanko = kaisu - 5 * shou5 - 10 * shou10;
 
-        for (int i = 0; i < shou5; i++) {
 
-            image = new ImageView[shou5];
+        for (int i = 0; i < shou10; i++) {
+
+            image = new ImageView[shou10];
 
             image[i] = new ImageView(this);
-            image[i].setImageResource(clock5.resId);
-
-            int imageWidth = 0;
+            image[i].setImageResource(clock10.resId);
 
             //画像サイズを変える
             layoutParams = new LinearLayout.LayoutParams(
@@ -127,14 +126,12 @@ public class Memo2Activity extends AppCompatActivity {
 
         }
 
-        for (int i = 0; i < shou10; i++) {
+        for (int i = 0; i < shou5; i++) {
 
-            image = new ImageView[shou10];
+            image = new ImageView[shou5];
 
             image[i] = new ImageView(this);
-            image[i].setImageResource(clock10.resId);
-
-            int imageWidth = 0;
+            image[i].setImageResource(clock5.resId);
 
             //画像サイズを変える
             layoutParams = new LinearLayout.LayoutParams(
