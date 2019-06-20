@@ -21,6 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -32,17 +33,15 @@
                     android:text="時給"
                     android:textSize="22sp" />
 
-                <EditText
-                    android:id="@+id/jikyuEditText2"
+                <TextView
+                    android:id="@+id/jikyuTextView"
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:ems="10"
                     android:fontFamily="@font/amiko"
                     android:gravity="center_horizontal"
                     android:hint="985"
-                    android:inputType="textPersonName"
-                    android:singleLine="true"
+                    android:onClick="save"
                     android:textSize="22sp" />
 
                 <TextView
@@ -50,22 +49,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     android:text="円"
                     android:textSize="22sp" />
 
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:background="@drawable/background_button3"
-                    android:fontFamily="@font/amiko"
-                    android:gravity="center"
-                    android:onClick="save"
-                    android:text="登録"
-                    android:textColor="@android:color/white"
-                    android:textSize="22sp" />
+                <!--<Button-->
+                <!--android:id="@+id/button5"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--android:background="@drawable/background_button3"-->
+                <!--android:fontFamily="@font/amiko"-->
+                <!--android:gravity="center"-->
+                <!--android:onClick="save"-->
+                <!--android:text="登録"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="22sp" />-->
             </LinearLayout>
 
             <LinearLayout
@@ -135,9 +136,9 @@
                 android:id="@+id/wantTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/amiko"
                 android:text="欲しいもの"
                 android:textSize="22sp" />

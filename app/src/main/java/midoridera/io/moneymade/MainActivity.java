@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     TextView timePickStartTextView;
     TextView timePickEndTextView;
+    TextView jikyuTextView;
     boolean isPushedStart1;
     boolean isPushedStart2;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         wantTextView = (TextView) findViewById(R.id.wantTextView);
 
-        jikyuEditText2 = (EditText) findViewById(R.id.jikyuEditText2);
+        jikyuTextView = (TextView) findViewById(R.id.jikyuTextView);
 
         timePickStartTextView = (TextView)findViewById(R.id.timePickStartTextView);
         timePickEndTextView = (TextView)findViewById(R.id.timePickEndTextView);
@@ -81,9 +82,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         minute2 = pref.getInt("key_minute2", 0);
         timePickEndTextView.setText(String.format(Locale.US, "%d:%d", hour2, minute2));
 
-
-        jikyuEditText2.setText(pref.getString("key_jikyu", ""));
-
+        jikyu = getIntent().getIntExtra("jikyu", 0);
+        jikyuTextView.setText(pref.getString("key_jikyu", ""));
         jikyu = Integer.parseInt(pref.getString("key_jikyu", "0"));
 
 
@@ -157,13 +157,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
     public void save(View v) {
-        String jikyuText = jikyuEditText2.getText().toString();
+        Intent intent = new Intent(this, Entry.class);
+        startActivity(intent);
 
-        jikyu = Integer.parseInt(jikyuText);
-
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("key_jikyu", jikyuText);
-        editor.commit();
+//        String jikyuText = jikyuEditText2.getText().toString();
+//
+//        jikyu = Integer.parseInt(jikyuText);
+//
+//        SharedPreferences.Editor editor = pref.edit();
+//        editor.putString("key_jikyu", jikyuText);
+//        editor.commit();
 
 
     }
@@ -225,6 +228,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         }
 
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
+
+
+
         List<Memo> items = new ArrayList<Memo>(results);
 
 
