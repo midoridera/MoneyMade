@@ -2,6 +2,7 @@ package midoridera.io.moneymade;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +54,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     int minute1;
     int hour2;
     int minute2;
-
-//    TextView timeSumTextView;
 
 
     @Override
@@ -101,25 +101,38 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                DialogFragment newFragment = new Deletedialog();
-                newFragment.show(getSupportFragmentManager(), "delete");
+            public boolean onItemLongClick(final AdapterView<?> adapterView, View view, final int position, long id) {
 
-//                Memo memo = (Memo) adapterView.getItemAtPosition(position);
-//                ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
-//
-//                adapter.remove(memo);
-//
-//                final Memo targetMemo = realm.where(Memo.class).equalTo("updateDate",
-//                        memo.updateDate).findFirst();
-//
-//                realm.executeTransaction(new Realm.Transaction() {
-//                    @Override
-//                    public void execute(Realm realm) {
-//                        targetMemo.deleteFromRealm();
-//                    }
-//                });
-//
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder .setMessage("削除しますか？")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Memo memo = (Memo) adapterView.getItemAtPosition(position);
+                                ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
+
+                                adapter.remove(memo);
+
+                                final Memo targetMemo = realm.where(Memo.class).equalTo("updateDate",
+                                        memo.updateDate).findFirst();
+
+                                realm.executeTransaction(new Realm.Transaction() {
+                                    @Override
+                                    public void execute(Realm realm) {
+                                        targetMemo.deleteFromRealm();
+                                    }
+                                });
+
+                                Toast.makeText(MainActivity.this, "削除しました", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("キャンセル", null)
+                        .setCancelable(true);
+
+                // show dialog
+                builder.show();
+
                 return true;
             }
         });
