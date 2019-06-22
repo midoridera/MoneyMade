@@ -21,6 +21,7 @@ public class TimePick extends DialogFragment implements
 
             return new TimePickerDialog(getActivity(),
                     (MainActivity)getActivity(), hour, minute, true);
+
         }
 
         @Override

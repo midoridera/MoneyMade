@@ -1,5 +1,6 @@
 package midoridera.io.moneymade;
 
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     int hour2;
     int minute2;
 
-    TextView timeSumTextView;
+//    TextView timeSumTextView;
 
 
     @Override
@@ -98,24 +99,27 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Memo memo = (Memo) adapterView.getItemAtPosition(position);
+                DialogFragment newFragment = new Deletedialog();
+                newFragment.show(getSupportFragmentManager(), "delete");
 
-                ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
-
-                adapter.remove(memo);
-
-                final Memo targetMemo = realm.where(Memo.class).equalTo("updateDate",
-                        memo.updateDate).findFirst();
-
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        targetMemo.deleteFromRealm();
-                    }
-                });
-
+//                Memo memo = (Memo) adapterView.getItemAtPosition(position);
+//                ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
+//
+//                adapter.remove(memo);
+//
+//                final Memo targetMemo = realm.where(Memo.class).equalTo("updateDate",
+//                        memo.updateDate).findFirst();
+//
+//                realm.executeTransaction(new Realm.Transaction() {
+//                    @Override
+//                    public void execute(Realm realm) {
+//                        targetMemo.deleteFromRealm();
+//                    }
+//                });
+//
                 return true;
             }
         });
@@ -123,8 +127,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
     }
-
-
 
     public void setMemoList() {
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
@@ -159,15 +161,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void save(View v) {
         Intent intent = new Intent(this, Entry.class);
         startActivity(intent);
-
-//        String jikyuText = jikyuEditText2.getText().toString();
-//
-//        jikyu = Integer.parseInt(jikyuText);
-//
-//        SharedPreferences.Editor editor = pref.edit();
-//        editor.putString("key_jikyu", jikyuText);
-//        editor.commit();
-
 
     }
 
